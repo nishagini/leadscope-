@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1b4332">
+<title>Daily interactions — Leadscope</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b4332'/%3E%3Ctext x='32' y='45' font-family='Arial,Helvetica,sans-serif' font-size='38' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --soft:#f4f7f5; --mint:#e8f4ec; --line:#e2ebe5;
+  --ink:#0f2a1e; --text:#3b4b42; --muted:#6a7a71;
+  --green:#1b4332; --pink:#e5195e;
+  --sh1:0 1px 2px rgba(15,42,30,.05),0 8px 24px rgba(15,42,30,.06);
+  --sh2:0 2px 4px rgba(15,42,30,.05),0 24px 56px rgba(15,42,30,.12);
+  --head:"Plus Jakarta Sans","Trebuchet MS",Arial,sans-serif;
+  --body:"DM Sans","Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0c1711; --soft:#111f17; --mint:#16291f; --line:#223a2c;
+    --ink:#eaf6ee; --text:#c4d6cb; --muted:#8fa79a;
+    --green:#2e7a57;
+    --sh1:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+    --sh2:0 2px 4px rgba(0,0,0,.3),0 24px 56px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 72px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--head);font-weight:800;font-size:1.05rem;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.mark{width:34px;height:34px;border-radius:11px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:.95rem;font-weight:800}
+.top a.back{font-size:.9rem;font-weight:700;color:var(--muted);text-decoration:none}
+.top a.back:hover{color:var(--pink)}
+h1{font-family:var(--head);font-size:2rem;letter-spacing:-.03em;margin:30px 0 4px}
+.sub{color:var(--muted);margin:0 0 26px;font-size:.98rem}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.card{background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:18px 18px 16px;box-shadow:var(--sh1)}
+.card .lab{font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card .val{font-family:var(--head);font-size:2.05rem;font-weight:800;letter-spacing:-.04em;line-height:1.15;margin-top:6px}
+.card.hero{background:linear-gradient(140deg,var(--green),#2f7d59);border-color:transparent;color:#fff}
+.card.hero .lab{color:rgba(255,255,255,.72)}
+.panel{margin-top:20px;background:var(--soft);border:1px solid var(--line);border-radius:24px;padding:24px 26px;box-shadow:var(--sh1)}
+h2{font-family:var(--head);font-size:1.12rem;letter-spacing:-.02em;margin:0 0 18px}
+.chart{display:flex;align-items:flex-end;gap:4px;height:190px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.bar{width:100%;background:linear-gradient(180deg,#2f7d59,#1b4332);border-radius:5px 5px 2px 2px;min-height:3px;transition:opacity .15s}
+.bar.zero{background:var(--line)}
+.col:hover .bar{opacity:.75}
+.col .n{font-size:.66rem;color:var(--muted);font-weight:700;margin-bottom:5px}
+.axis{display:flex;gap:4px;margin-top:9px}
+.axis span{flex:1;text-align:center;font-size:.62rem;color:var(--muted);white-space:nowrap;overflow:hidden}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{text-align:left;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 0 10px;font-weight:800}
+td{padding:10px 0;border-top:1px solid var(--line);color:var(--text);vertical-align:top;word-break:break-all}
+td.num{text-align:right;font-family:var(--head);font-weight:800;color:var(--ink);width:74px}
+td.path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;color:var(--ink)}
+.bar-mini{height:6px;border-radius:99px;background:var(--pink);display:block;margin-top:7px}
+.state{margin-top:22px;font-size:.9rem;color:var(--muted);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{font:inherit;font-size:.86rem;font-weight:700;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:9px 18px;cursor:pointer}
+.btn:hover{border-color:var(--pink);color:var(--pink)}
+.err{color:#e5195e;font-weight:600;max-width:70ch}
+.empty{color:var(--muted);font-size:.92rem}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/"><span class="mark">L</span>Leadscope</a>
+    <a class="back" href="/">← Back to the main site</a>
+  </div>
+
+  <h1>Daily interactions</h1>
+  <p class="sub">Every page view on leadscope.in, logged to Google Sheets.</p>
+
+  <div class="grid">
+    <div class="card hero"><div class="lab">Today</div><div class="val" id="v-today">—</div></div>
+    <div class="card"><div class="lab">Yesterday</div><div class="val" id="v-yesterday">—</div></div>
+    <div class="card"><div class="lab">Last 7 days</div><div class="val" id="v-last7">—</div></div>
+    <div class="card"><div class="lab">Last 30 days</div><div class="val" id="v-last30">—</div></div>
+    <div class="card"><div class="lab">All time</div><div class="val" id="v-all">—</div></div>
+  </div>
+
+  <div class="panel">
+    <h2>Last 30 days</h2>
+    <div class="chart" id="chart" role="img" aria-label="Page views per day for the last 30 days"></div>
+    <div class="axis" id="axis"></div>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h2>Top pages</h2>
+      <table><thead><tr><th>Path</th><th style="text-align:right">Views</th></tr></thead><tbody id="paths"><tr><td colspan="2" class="empty">Loading…</td></tr></tbody></table>
+    </div>
+    <div class="panel">
+      <h2>Where from</h2>
+      <table><thead><tr><th>Source</th><th style="text-align:right">Views</th></tr></thead><tbody id="refs"><tr><td colspan="2" class="empty">Loading…</td></tr></tbody></table>
+    </div>
+  </div>
+
+  <div class="state">
+    <span id="status">Loading today’s numbers…</span>
+    <button class="btn" id="refresh" type="button">Refresh</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var EP='https://script.google.com/macros/s/AKfycbzPqLtQgiJQ97HGBuw1_5hNEbrA0L19o7sNkuJiIbxqQ0C8kpBU85YnuoXF1CfY8_st/exec';
+  var statusEl=document.getElementById('status');
+  var timer=null;
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  function set(id,v){document.getElementById(id).textContent=v;}
+
+  function render(d){
+    set('v-today', d.today);
+    set('v-yesterday', d.yesterday);
+    set('v-last7', d.last7);
+    set('v-last30', d.last30);
+    set('v-all', d.all);
+
+    var days=d.days||[], max=1;
+    days.forEach(function(x){ if(x.n>max) max=x.n; });
+    var chart=document.getElementById('chart'), axis=document.getElementById('axis');
+    chart.innerHTML=''; axis.innerHTML='';
+    days.forEach(function(x,i){
+      var col=document.createElement('div'); col.className='col';
+      var pct=Math.round((x.n/max)*100);
+      var show=(x.n>0)?('<div class="n">'+x.n+'</div>'):'';
+      col.innerHTML=show+'<div class="bar'+(x.n?'':' zero')+'" style="height:'+Math.max(pct,x.n?6:3)+'%" title="'+x.d+' — '+x.n+' view'+(x.n===1?'':'s')+'"></div>';
+      chart.appendChild(col);
+      var s=document.createElement('span');
+      s.textContent=(i%5===0)?x.d.slice(5):'';
+      axis.appendChild(s);
+    });
+
+    var pb=document.getElementById('paths');
+    if(!d.paths||!d.paths.length){pb.innerHTML='<tr><td colspan="2" class="empty">No views logged yet.</td></tr>';}
+    else{
+      var top=d.paths[0].n||1, html='';
+      d.paths.forEach(function(x){
+        html+='<tr><td class="path">'+esc(x.k)+'</td><td class="num">'+x.n+
+          '<span class="bar-mini" style="width:'+Math.max(4,Math.round(x.n/top*70))+'px"></span></td></tr>';
+      });
+      pb.innerHTML=html;
+    }
+
+    var rb=document.getElementById('refs');
+    if(!d.refs||!d.refs.length){rb.innerHTML='<tr><td colspan="2" class="empty">No views logged yet.</td></tr>';}
+    else{
+      var topR=d.refs[0].n||1, h2='';
+      d.refs.forEach(function(x){
+        h2+='<tr><td class="path">'+esc(x.k)+'</td><td class="num">'+x.n+
+          '<span class="bar-mini" style="width:'+Math.max(4,Math.round(x.n/topR*70))+'px"></span></td></tr>';
+      });
+      rb.innerHTML=h2;
+    }
+
+    statusEl.className='';
+    statusEl.textContent='Updated '+d.updated+' · '+d.all+' view'+(d.all===1?'':'s')+' logged in total';
+  }
+
+  function fail(msg){
+    statusEl.className='err';
+    statusEl.textContent=msg;
+  }
+
+  var attempts=0;
+
+  window.lsStats=function(d){
+    if(timer){clearTimeout(timer);timer=null;}
+    attempts=0;
+    if(!d||!d.ok){ fail('The Apps Script replied but reported an error. Open the Apps Script log for details.'); return; }
+    render(d);
+  };
+
+  function load(){
+    statusEl.className='';
+    statusEl.textContent='Loading today’s numbers…';
+    var old=document.getElementById('ls-jsonp');
+    if(old) old.parentNode.removeChild(old);
+    var s=document.createElement('script');
+    s.id='ls-jsonp';
+    s.src=EP+'?action=stats&callback=lsStats&cb='+Date.now();
+    s.onerror=function(){
+      if(attempts<2){ attempts++; setTimeout(load,1500); return; }
+      fail('Could not reach the stats endpoint. Deploy the updated Code.gs as a new version of the EXISTING web app — the URL must not change.');
+    };
+    document.body.appendChild(s);
+    if(timer) clearTimeout(timer);
+    timer=setTimeout(function(){
+      if(statusEl.textContent.indexOf('Loading')===0){
+        fail('No response yet. In Apps Script: Deploy → Manage deployments → edit the existing one → Version: New version → Deploy.');
+      }
+    },15000);
+  }
+
+  document.getElementById('refresh').addEventListener('click',load);
+  load();
+})();
+</script>
+</body>
+</html>
